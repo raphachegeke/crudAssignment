@@ -24,7 +24,7 @@ app.get("/form", (req, res) => {
 
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://raphachegekamunu:41831655@cluster0.ddv4ceq.mongodb.net/crudDatabase?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://student:123@cluster0.zp8zsys.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
     .then(() => console.log("✅ MongoDB Connected"))
     .catch(err => console.log(err));
 
