@@ -2,6 +2,7 @@
   "name": "crudassignment",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "server.js",
   "dependencies": {
     "accepts": "^2.0.0",
@@ -99,7 +100,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/raphachegeke/crudAssignment/issues"
   },
