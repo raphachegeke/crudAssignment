@@ -1,0 +1,23 @@
+<h2>All Users</h2>
+<div id="users"></div>
+
+<script>
+async function loadUsers() {
+  const res = await fetch("/users");
+  const users = await res.json();
+  const div = document.getElementById("users");
+  div.innerHTML = users.map(u => `
+    <p>
+      <b>${u.name}</b> — ${u.email} — ${u.age} years old
+      <button onclick="deleteUser('${u._id}')">Delete</button>
+    </p>
+  `).join("");
+}
+
+async function deleteUser(id) {
+  await fetch(`/users/${id}`, { method: "DELETE" });
+  loadUsers();
+}
+
+loadUsers();
+</script>
