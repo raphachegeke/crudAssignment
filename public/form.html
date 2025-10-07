@@ -1,4 +1,48 @@
+<!-- Form to add a new user -->
 <form id="userForm">
+  <!-- Input field for user's name -->
+  <input name="name" placeholder="Name"><br>
+
+  <!-- Input field for user's email -->
+  <input name="email" placeholder="Email"><br>
+
+  <!-- Input field for user's age (number type) -->
+  <input name="age" type="number" placeholder="Age"><br>
+
+  <!-- Button to submit the form and add a new user -->
+  <button type="submit">Add User</button>
+</form>
+
+<script>
+// Get the form element by its ID
+const form = document.getElementById("userForm");
+
+// Add an event listener for when the form is submitted
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // Prevent the default form submission behavior (page reload)
+
+  // Convert the form data into a JavaScript object
+  const data = Object.fromEntries(new FormData(form));
+
+  // Send the form data to the backend server to create a new user
+  await fetch("https://crud-assignment-kappa.vercel.app/users", {
+    method: "POST", // HTTP method to add a user
+    headers: { "Content-Type": "application/json" }, // Send the data as JSON
+    body: JSON.stringify(data) // Convert the data to JSON format
+  });
+
+  // Show a success message after the user is added
+  alert("User added successfully!");
+});
+</script>
+
+
+
+
+
+
+
+<!-- <form id="userForm">
   <input name="name" placeholder="Name"><br>
   <input name="email" placeholder="Email"><br>
   <input name="age" type="number" placeholder="Age"><br>
@@ -17,4 +61,4 @@
     });
     alert("User added success!");
   });
-</script>
+</script> -->
