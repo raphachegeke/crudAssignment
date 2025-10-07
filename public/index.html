@@ -1,4 +1,47 @@
+<!-- Title for the user list -->
 <h2>All Users</h2>
+
+<!-- This is where the list of users will appear -->
+<div id="users"></div>
+
+<script>
+// This function gets the list of users from the server and shows them on the page
+async function loadUsers() {
+  // Send a GET request to /users to get all user data
+  const res = await fetch("/users");
+  const users = await res.json(); // Convert the response to JSON format
+
+  // Get the <div> where we want to show the users
+  const div = document.getElementById("users");
+
+  // Replace the content of the div with the user list
+  div.innerHTML = users.map(u => `
+    <p>
+      <b>${u.name}</b> — ${u.email} — ${u.age} years old
+      <!-- Button to delete a user -->
+      <button onclick="deleteUser('${u._id}')">Delete</button>
+    </p>
+  `).join(""); // Join all user HTML blocks into one string
+}
+
+// This function deletes a user by their ID
+async function deleteUser(id) {
+  // Send a DELETE request to the server to remove the user
+  await fetch(`/users/${id}`, { method: "DELETE" });
+
+  // Reload the user list after deleting
+  loadUsers();
+}
+
+// Load all users when the page first opens
+loadUsers();
+</script>
+
+
+
+
+
+<!-- <h2>All Users</h2>
 <div id="users"></div>
 
 <script>
@@ -20,4 +63,4 @@ async function deleteUser(id) {
 }
 
 loadUsers();
-</script>
+</script> -->
